@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html ng-app="app" lang="pt-br">
 
-<head>
-
+<head ng-cloak>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Gateway</title>
+    <meta name="description" content="Gateway">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#777777" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="windows-web-app-capable" content="yes">
+    <meta name="web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <link rel="canonical" href="https://www.demoiselle.org/" />
+    <link rel="manifest" href="/app.v1.webmanifest" />
+
+    <link rel="publisher" href="https://github.com/PauloGladson" />
+    <meta name="author" content="PauloGladson">
+    <link type="text/plain" rel="author" href="/humans.txt" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Gateway" />
+    <meta property="og:type" content="SoftwareApplication" />
+    <meta property="og:title" content="Gateway" />
+    <meta property="og:description" content="Gateway" />
+    <meta property="og:url" content="https://www.demoiselle.org/" />
+    <meta property="og:image" content="https://www.demoiselle.org/images/logo-large.png" />
+    <meta property="article:published_time" content="2017-03-01" />
+    <meta property="article:modified_time" content="2017-07-29" />
+    <meta property="article:tag" content="Gateway" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@paulogladson">
+    <meta name="twitter:site" content="www.demoiselle.org">
+    <meta name="twitter:domain" content="www.demoiselle.org">
+    <meta name="twitter:title" content="Gateway">
+    <meta name="twitter:description" content="Gateway">
+    <meta property="og:image" content="https://www.demoiselle.org/images/logo-large.png">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -36,7 +76,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-network-wired"></i>
                 </div>
@@ -48,7 +88,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -410,7 +450,7 @@
     <script src="/scripts/services/ws.js"></script>
     <script src="/scripts/template.js"></script>
     <script src="/scripts/theme/all.js"></script>
-    <script src="/scripts/theme/bootstrap.bundle.js"></script>
+    <script src="/scripts/theme/bootstrap.js"></script>
     <script src="/scripts/theme/jquery.easing.js"></script>
     <script src="/scripts/theme/sb-admin-2.js"></script>
     <!-- endinjector -->

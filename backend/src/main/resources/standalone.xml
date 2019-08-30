@@ -1,17 +1,80 @@
 <subsystem xmlns="urn:jboss:domain:datasources:4.0">
     <datasources>
         <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
-            <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+            <connection-url>jdbc:h2:mem;DB_CLOSE_ON_EXIT=FALSE</connection-url>
             <driver>h2</driver>
             <security>
                 <user-name>sa</user-name>
                 <password>sa</password>
             </security>
         </datasource>
+        <datasource jta="true" jndi-name="java:jboss/datasources/GatewayDS" pool-name="GatewayDS" enabled="true" use-java-context="true">
+            <connection-url>jdbc:postgresql://${env.DB_HOST}:${env.DB_PORT}/gateway</connection-url>
+            <!--<connection-url>jdbc:postgresql://10.79.60.47/geo</connection-url>-->
+            <driver-class>org.postgresql.Driver</driver-class>
+            <driver>postgresql</driver>
+            <security>
+                <user-name>${env.DB_USERNAME}</user-name>
+                <password>${env.DB_PASSWORD}</password>
+                <!--<user-name>postgres</user-name>-->
+                <!--<password>KAAUV2TkMuPkKce7dsgAcZR66xmdHbx26AaV</password>-->
+            </security>
+            <validation>
+                <validate-on-match>false</validate-on-match>
+                <background-validation>false</background-validation>
+            </validation>
+            <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+            <pool>
+                <min-pool-size>1</min-pool-size>
+                <max-pool-size>2</max-pool-size>
+                <prefill>true</prefill>
+            </pool>
+            <validation>
+                <check-valid-connection-sql>select 1</check-valid-connection-sql>
+                <validate-on-match>true</validate-on-match>
+                <background-validation>true</background-validation>
+                <background-validation-millis>10000</background-validation-millis>
+            </validation>
+            <statement>
+                <prepared-statement-cache-size>512</prepared-statement-cache-size>
+                <share-prepared-statements>true</share-prepared-statements>
+            </statement>
+            
+        </datasource>
+      
         <drivers>
             <driver name="h2" module="com.h2database.h2">
                 <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
             </driver>
+            <driver name="postgresql" module="org.postgresql">
+                <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+            </driver>
         </drivers>
     </datasources>
+</subsystem>
+<subsystem xmlns="urn:jboss:domain:undertow:4.0">
+    <buffer-cache name="default"/>
+    <server name="default-server">
+        <http-listener name="default" socket-binding="http" redirect-socket="https" enable-http2="true"/>
+        <https-listener name="https" socket-binding="https" security-realm="ApplicationRealm" enable-http2="true"/>
+        <host name="default-host" alias="localhost">
+            <location name="/" handler="welcome-content"/>
+            <filter-ref name="server-header"/>
+            <filter-ref name="x-powered-by-header"/>
+            <filter-ref name="gzipFilter" predicate="exists['%{o,Content-Type}'] and regex[pattern='(?:application/javascript|text/css|text/html|text/xml|application/json)(;.*)?', value=%{o,Content-Type}, full-match=true]"/>  
+            <http-invoker security-realm="ApplicationRealm"/>
+        </host>
+    </server>
+    <servlet-container name="default">
+        <jsp-config/>
+        <websockets/>
+    </servlet-container>
+    <handlers>
+        <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
+    </handlers>
+    <filters>
+        <response-header name="server-header" header-name="Server" header-value="WildFly/11"/>
+        <response-header name="x-powered-by-header" header-name="X-Powered-By" header-value="Undertow/1"/>
+        <gzip name="gzipFilter"/>
+    </filters>
 </subsystem>
