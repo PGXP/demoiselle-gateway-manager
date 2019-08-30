@@ -16,3 +16,4 @@
 /backend/.settings/
 
 /frontend/nbproject/
+/frontend/package-lock.json
