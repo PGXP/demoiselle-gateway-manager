@@ -1,0 +1,64 @@
+<div class="painel painel-default" >
+
+    <div class="form-group row">
+        <div class="col-md-1">
+            <img src="{{foto}}" style="width: 90px; height: 130px;" >
+        </div>
+        <div class="col-md-3">
+            {{currentUser.name}}
+            <br>
+            {{currentUser.setor}}
+            <br>
+            {{currentUser.telephoneNumber}}
+            <br>
+            <br>
+            <br>
+            <label >Layout:</label>
+            <select ng-model="css" ng-change="setCss(css)">
+                <option ng-repeat="bs in bootstraps" value="{{bs.url}}">{{bs.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            Produtos acessados {{info.visitas}}
+            <br>
+            Produtos seguidos {{info.seguindo}}
+            <br>
+            Comentários {{info.comentarios}}
+            <br>
+            Pontos de classificação {{info.classificacao}}
+            <br>
+            Interessado em {{info.interessado}} fases
+            <br>
+            Membro de {{info.membro}} fases
+            <br>
+            Lider em {{info.lider}} fases
+            <br>
+            Média de pontos {{info.classificacao / info.visitas}}
+            <br>
+        </div>
+        <div class="col-md-4">
+            <div ng-repeat="g in currentUser.grupos" class="nga-default nga-stagger nga-squash-left">
+                {{g.descricao}}
+                <br>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="form-group row">
+        <uib-tabset active="activeJustified" justified="true" >
+            <uib-tab index="0" heading="Produtos" select="atualizaProdutos()">
+                <div ng-include src="'views/dashboard/seguindo.html'" ></div>
+            </uib-tab>
+            <uib-tab index="1" heading="Fases" select="atualizaFases()">
+                <div ng-include src="'views/dashboard/minhasDemandas.html'"></div>
+            </uib-tab>
+            <uib-tab index="2" heading="Mensagens">
+                <div ng-include src="'views/dashboard/mensagens.html'"></div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+
+</div>

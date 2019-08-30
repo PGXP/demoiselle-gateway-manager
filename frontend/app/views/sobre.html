@@ -1,0 +1,33 @@
+<div class="painel painel-default animated fadeInUp" ng-controller="SobreController">
+    <h3 class="page-header">Sobre o Catálogo de Tecnologia</h3>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+
+                    <div ng-show="!isEditing" style="width: 100%;">
+                        <div ng-bind-html="sobreHtml"></div>
+                        <button has-roles="USER_ROLES.ADMINISTRADOR" ng-if="currentUser" class="btn btn-primary" ng-click="edit()">
+                            <i class="glyphicon glyphicon-pencil"> </i> Editar
+                        </button>
+                    </div>
+
+                    <form ng-show="isEditing" has-roles="USER_ROLES.ADMINISTRADOR">
+                        <textarea id="ckeditor1" name="ckeditor1" class="ckeditor" ng-model="editor"></textarea>
+                        <br/>
+                        <button class="btn btn-primary" ng-click="save()">
+                            <i class="glyphicon glyphicon-ok-sign"> </i> Salvar
+                        </button>
+                    </form>
+
+                </div>
+                <div class="panel-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

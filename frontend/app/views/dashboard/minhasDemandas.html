@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="glyphicon glyphicon-stats"></i> Minhas demandas
+    </div>
+    <div class="panel-body" >
+
+        <ul class="chat list-group">
+            <li ng-repeat="d in demandas" title="{{f.faseType| nomeFase}}" class="left list-group-item clearfix nga-default nga-stagger nga-squash-left">
+                <item-fase fase="d.fase"></item-fase>
+            </li>
+        </ul>
+
+    </div>
+
+
+</div>

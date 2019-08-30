@@ -1,0 +1,35 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "dependencies": {
+    "d3": "~3.5.6",
+    "bootbox": "4.4.0",
+    "angular-touch": "~1.7.8",
+    "angular-route": "~1.7.8",
+    "angular-resource": "~1.7.8",
+    "angular-animate": "~1.7.8",
+    "angular": "~1.7.8",
+    "jquery": "~3.4.1",
+    "json3": "~3.3.1",
+    "angular-notification": "~1.1.1",
+    "ng-websocket": "~0.2.1",
+    "angular-i18n": "^v1.3.20",
+    "angular-ui-grid": "^4.8.1",
+    "angular-bootstrap": "^2.5.0",
+    "angular-nvd3": "^1.0.9",
+    "bootstrap": "^4.3.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.7.8",
+    "angular-scenario": "~1.7.8"
+  },
+  "overrides": {
+    "angular-i18n": {
+      "main": "angular-locale_pt-br.js"
+    }
+  },
+  "appPath": "app",
+  "resolutions": {
+    "angular": "~1.7.8"
+  }
+}

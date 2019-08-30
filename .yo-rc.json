@@ -1,0 +1,7 @@
+{
+  "generator-demoiselle": {
+    "project": "app",
+    "package": "org.demoiselle",
+    "prefix": "app"
+  }
+}

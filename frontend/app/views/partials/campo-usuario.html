@@ -1,0 +1,61 @@
+<div>	
+	<div class="input-group custom-search-form">	
+		<input type="text" class="form-control" id="{{name}}"
+			value="{{usuario.name}} - {{usuario.setor}} {{usuario.telephoneNumber}}" required disabled=disabled > 
+		<span class="input-group-btn">
+			<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#{{name}}Modal">
+				<i class="glyphicon glyphicon-search"></i> Pesquisar
+			</button>
+		</span>
+	</div>
+
+	<div class="modal fade" id="{{name}}Modal" tabindex="-1"
+		role="dialog" aria-labelledby="{{name}}Label" aria-hidden="true"
+		style="display: none;">
+		<form>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>						
+						<h4 class="modal-title" id="{{name}}">Pesquisar</h4>
+					</div>
+					<div ui-linhabar></div>
+					<div class="modal-body">
+						<div class="form-group">
+							<div class="form-group input-group">
+								<input type="text" class="form-control" ng-model="palavraChave" autofocus="autofocus" ng-enter="pesquisar()">
+								<span class="input-group-btn">
+									<button class="btn btn-primary" ng-click="pesquisar()">
+										<i class="glyphicon glyphicon-search"></i> Pesquisar 
+									</button>
+									
+								</span>
+							</div>
+
+							<div class="list-group" ng-if="resultadoPesquisa.length">
+								<a ng-repeat="m in resultadoPesquisa" class="list-group-item row"> 
+									<h5>{{m.name}}								
+									<button class="btn btn-primary  pull-right" type="button" ng-click="selecionar(m)" data-dismiss="modal">
+										<i class="glyphicon glyphicon-plus-sign"></i> Adicionar 
+									</button> 
+									</h5>
+									<p> <small> {{m.setor}} <br/> {{m.telephoneNumber}} </small></p>
+									
+								</a>
+							</div>
+							
+						</div>
+					</div>
+					<div class="modal-footer">						
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</form>
+	</div>
+	<!-- /.modal -->
+	
+
+</div>
