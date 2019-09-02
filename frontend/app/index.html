@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html ng-app="app" lang="pt-br">
+<html ng-app="app" lang="pt-br" ng-cloak>
 
 <head ng-cloak>
     <meta charset="utf-8">
     <title>Gateway</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Gateway">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width">
     <meta name="theme-color" content="#777777" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="windows-web-app-capable" content="yes">
@@ -60,9 +60,10 @@
     <!-- endbuild -->
     <!-- <link rel="stylesheet" href="layouts/{{css}}.css"> -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/materia.css">
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/all.css">
     <link rel="stylesheet" href="styles/sb-admin-2.css">
+    <link rel="stylesheet" href="styles/materia.css">
     <!-- endbuild -->
 
 </head>
@@ -70,7 +71,7 @@
 <body id="page-top" ng-controller="ApplicationController">
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" ng-if="!currentUser">
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -103,7 +104,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" ng-href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Components</span>
                 </a>
@@ -118,7 +119,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" ng-href="" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Utilities</span>
                 </a>
@@ -143,7 +144,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" ng-href="" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
@@ -202,29 +203,9 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                              <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" ng-href="" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
@@ -267,7 +248,7 @@
                                         Spending Alert: We've noticed unusually high spending for your account.
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item text-center small text-gray-500" ng-href="">Show All Alerts</a>
                             </div>
                         </li>
 
@@ -383,30 +364,8 @@
 
     </div>
     <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- <div ng-if="currentUser" ng-view>
+    </div> -->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -439,7 +398,7 @@
     <script src="/scripts/controllers/equipamento.js"></script>
     <script src="/scripts/directives/directives.js"></script>
     <script src="/scripts/filters/filters.js"></script>
-    <script src="/scripts/routes/fabricante.js"></script>
+    <script src="/scripts/routes/equipamento.js"></script>
     <script src="/scripts/services/alert.js"></script>
     <script src="/scripts/services/app.js"></script>
     <script src="/scripts/services/auth.js"></script>
@@ -448,7 +407,6 @@
     <script src="/scripts/services/usuario.js"></script>
     <script src="/scripts/services/validation.js"></script>
     <script src="/scripts/services/ws.js"></script>
-    <script src="/scripts/template.js"></script>
     <script src="/scripts/theme/all.js"></script>
     <script src="/scripts/theme/bootstrap.js"></script>
     <script src="/scripts/theme/jquery.easing.js"></script>

@@ -1,0 +1,25 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Equipamento</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-12 col-md-12 mb-12">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-header">
+                <button has-roles="USER_ROLES.ADMINISTRADOR, USER_ROLES.CADASTRADOR" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" ng-click="new ()">
+                  <i class="glyphicon glyphicon-plus-sign"> </i> Novo
+              </button>
+            </div>
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="animated fadeInUp" ng-grid="gridOptions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -5,10 +5,10 @@ app.factory('EquipamentoService', ['$http', '$q', function($http, $q) {
 
     service.findAll = function() {
         return $http
-                .get('api/equipamento')
-                .then(function(res) {
-                    return res.data;
-                });
+            .get('api/equipamento')
+            .then(function(res) {
+                return res.data;
+            });
     };
 
     service.save = function(equipamento) {
@@ -85,32 +85,29 @@ app.factory('EquipamentoService', ['$http', '$q', function($http, $q) {
         });
         return deferred.promise;
     };
-    
+
     service.carregarProdutosRelacionados = function(equipamentoId) {
         return $http
-                .get('api/equipamento/produto/listaequipamento/' + equipamentoId)
-                .then(function(res) {
-                    return res.data;
-                }
-                );
+            .get('api/equipamento/produto/listaequipamento/' + equipamentoId)
+            .then(function(res) {
+                return res.data;
+            });
     };
 
     service.adicionarProduto = function(equipamentoId, p) {
         return $http
-                .post('api/equipamento/produto', {equipamento: {id: equipamentoId}, produto: {id: p.id}})
-                .then(function(res) {
-                    return;
-                }
-                );
+            .post('api/equipamento/produto', { equipamento: { id: equipamentoId }, produto: { id: p.id } })
+            .then(function(res) {
+                return;
+            });
     };
 
     service.removerProduto = function(id) {
         return $http
-                .delete('api/equipamento/produto/' + id)
-                .then(function(res) {
-                    return;
-                }
-                );
+            .delete('api/equipamento/produto/' + id)
+            .then(function(res) {
+                return;
+            });
     };
 
     return service;

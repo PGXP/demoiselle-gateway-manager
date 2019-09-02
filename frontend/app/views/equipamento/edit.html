@@ -1,0 +1,35 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Equipamento</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-12 col-md-12 mb-12">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="id">&nbsp;</label>
+                    <input class="form-control form-control-sm" disabled=disabled type="text" id="id" ng-model="equipamento.id">
+                </div>
+                <div class="form-group">
+                    <label for="nome">Equipamento:<font color="#FF0000"> *</font></label>
+                    <input type="text" class="form-control form-control-sm" id="nome" ng-model="equipamento.tipo" required>
+                    <span id="nome-message" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="codigoequipamento">Código:</label>
+                    <input class="form-control form-control-sm" type="text" id="codigoequipamento" ng-model="equipamento.codigo" required>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" ng-click="new ()">
+                    <i class="glyphicon glyphicon-plus-sign"> </i> Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
